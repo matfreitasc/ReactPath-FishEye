@@ -5,6 +5,7 @@ export default function lightbox() {
   const lightboxContainer = document.querySelector('.lightbox-container');
   const lightboxImage = document.querySelector('.lightbox-image');
   const lightboxVideo = document.querySelector('.lightbox-video');
+  const lightboxTitle = document.querySelector('.lightbox-title');
   const source = document.createElement('source');
 
   const lightboxBtns = document.querySelectorAll('.lightbox-btn');
@@ -20,6 +21,7 @@ export default function lightbox() {
     activeImage = lightboxArray.indexOf(image);
     if (lightboxArray[activeImage].classList.contains('image')) {
       lightboxImage.style.display = 'block';
+      lightboxTitle.innerHTML = image.dataset.title;
       lightboxVideo.style.display = 'none';
       lightboxImage.src = image.src;
       lightboxImage.alt = image.alt;
@@ -29,6 +31,7 @@ export default function lightbox() {
     if (lightboxArray[activeImage].classList.contains('video')) {
       lightboxImage.style.display = 'none';
       lightboxVideo.style.display = 'block';
+      lightboxTitle.innerHTML = image.dataset.title;
       source.setAttribute('src', `${image.src}`);
       source.setAttribute('type', 'video/mp4');
       source.setAttribute('alt', image.alt);

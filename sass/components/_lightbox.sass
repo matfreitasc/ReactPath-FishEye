@@ -8,7 +8,7 @@
   left: -99999
   min-width: 100%
   min-height: 100%
-  background-color: rgba(0, 0, 0, 0.9)
+  background-color: #ffffff
   display: grid
   place-items: center
   padding: 1rem
@@ -25,6 +25,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
     max-height: 90vh
     max-width: 80vw
+    border-radius: 5px
 
     .lightbox-image
       object-position: top
@@ -180,14 +181,6 @@
           -webkit-mask-size: cover
           mask-size: cover
 
-
-
-
-
-
-
-
-
     .lightbox-btn
       position: absolute
       display: grid
@@ -212,8 +205,6 @@
 .inactive
   opacity: 0
   pointer-events: none
-  
-
 
 .left
   left: -60px
@@ -241,3 +232,11 @@
   right: 0 !important
   opacity: 1
   pointer-events: all
+
+.lightbox-title
+  position: absolute
+  left: 0
+  bottom: -32px
+  font-size:24px
+  color: $primary-color
+  font-weight: 400

@@ -19,16 +19,29 @@
   justify-items: center
 
   .grid-item
-    .gallery-image
-      object-fit: cover
-      object-position: top
+    width: 350px
+    height: 351px
+    .image-wrapper
       width: 350px
       height: 300px
-      border-radius: 5px
+      position: relative
       cursor: zoom-in
-      &:hover
-        opacity: .7
-        transition: all 0.2s ease-in-out
+      .gallery-image
+        border-radius: 5px
+        max-width: 100%
+        max-height: 100%
+        width: 100%
+        height: 100%
+        position: absolute
+        object-fit: cover
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        margin: auto
+        &:hover
+          opacity: .7
+          transition: all 0.2s ease-in-out
 
     .player
       cursor: pointer
@@ -64,7 +77,7 @@
       justify-content: space-between
       align-items: center
       width: 350px
-      margin-top: 10px
+      padding: 15px 0
       .gallery-item-title
         font-size: 24px
         font-weight: 400

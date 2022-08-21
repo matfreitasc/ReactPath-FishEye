@@ -15,12 +15,16 @@ export default function displayMedia() {
       article.classList.add('grid-item');
       article.innerHTML = `
               <div class="grid-item ">
-              <img
-                src="./../assets/Sample Photos/${photographerNameNoSpace}/${image}"
-                alt="${altText},closeup view"
-                id='grid-item-lightbox'
-                class="gallery-image skeleton lightbox-item image"
-              />
+              <div class="image-wrapper">
+                <img
+                  src="./../assets/Sample Photos/${photographerNameNoSpace}/${image}"
+                  alt="${altText},closeup view"
+                  id='grid-item-lightbox'
+                  class="gallery-image skeleton lightbox-item image"
+                  data-title='${profileMedia.title}'
+                />
+              </div>
+              
               <section class="gallery-info">
                   <h2 class="gallery-item-title" aria-label="${profileMedia.title}">${profileMedia.title}</h2>
                   <div class="gallery-item-likes">
@@ -43,7 +47,7 @@ export default function displayMedia() {
       article.innerHTML = `
               <div class="grid-item">
               <div class="player" id='grid-item-lightbox'>
-                  <video alt type="video/${videoType}" poster="./../assets/Sample Photos/${photographerNameNoSpace}/${videoName}.png" src="./../assets/Sample Photos/${photographerNameNoSpace}/${profileMedia.video}" class="skeleton lightbox-item video" >
+                  <video data-title='${profileMedia.title}' alt="${profileMedia.title},closeup view"type="video/${videoType}" poster="./../assets/Sample Photos/${photographerNameNoSpace}/${videoName}.png" src="./../assets/Sample Photos/${photographerNameNoSpace}/${profileMedia.video}" class="skeleton lightbox-item video" >
                       <p>Your browser doesn't support HTML5 video. Here is a <a href="./../assets/Sample Photos/${photographerNameNoSpace}/${profileMedia.video}">link to the video</a> instead.</p>
                   </video>
               </div>
