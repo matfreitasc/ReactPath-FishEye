@@ -148,7 +148,27 @@ export default function lightbox() {
   });
   // Event to listen for when the fullscreen button is clicked //
   fullscreenButton.addEventListener('click', () => {
-    lightboxVideo.requestFullscreen();
+    if (lightboxVideo.requestFullscreen) {
+      lightboxVideo.requestFullscreen();
+    } else if (lightboxVideo.mozRequestFullScreen) {
+      lightboxVideo.mozRequestFullScreen();
+    } else if (lightboxVideo.webkitRequestFullscreen) {
+      lightboxVideo.webkitRequestFullscreen();
+    } else if (lightboxVideo.msRequestFullscreen) {
+      lightboxVideo.msRequestFullscreen();
+    }
+  });
+  // Event double Click to toggle fullscreen //
+  lightboxVideo.addEventListener('dblclick', () => {
+    if (lightboxVideo.requestFullscreen) {
+      lightboxVideo.requestFullscreen();
+    } else if (lightboxVideo.mozRequestFullScreen) {
+      lightboxVideo.mozRequestFullScreen();
+    } else if (lightboxVideo.webkitRequestFullscreen) {
+      lightboxVideo.webkitRequestFullscreen();
+    } else if (lightboxVideo.msRequestFullscreen) {
+      lightboxVideo.msRequestFullscreen();
+    }
   });
   // Event to listen for when the volume has changed  //
   // If the volume is 0 the volume icon will display volume 0 and vice versa//
@@ -217,5 +237,4 @@ export default function lightbox() {
       (e.offsetX / progress.offsetWidth) * lightboxVideo.duration;
     lightboxVideo.currentTime = progressTime;
   });
-  //
 }

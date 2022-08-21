@@ -30,23 +30,24 @@ buttonSelection.addEventListener('click', (e) => {
   buttonSelection.style.display = 'none';
   orderBtn.classList.remove('bottom-border-radius');
   arrow.classList.remove('arrow-rotate');
-  sortData(e.target.innerHTML);
+  sortData(e.target.id);
 });
 
 export function sortData(sortBy) {
   const media = Constants.mediaData;
-  const galleryItems = document.querySelectorAll('.grid-item');
-  if (sortBy == 'Date' || sortBy == undefined) {
+  let galleryItems = document.querySelectorAll('.grid-item');
+  if (sortBy == 'date' || sortBy == undefined) {
     galleryItems.forEach((item) => {
       item.remove();
     });
+
     displayMedia(
       media.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
       })
     );
     lightbox();
-  } else if (sortBy == 'Popularity') {
+  } else if (sortBy == 'popularity') {
     galleryItems.forEach((item) => {
       item.remove();
     });
@@ -56,7 +57,7 @@ export function sortData(sortBy) {
       })
     );
     lightbox();
-  } else if (sortBy == 'Title') {
+  } else if (sortBy == 'title') {
     galleryItems.forEach((item) => {
       item.remove();
     });
