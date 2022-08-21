@@ -436,6 +436,7 @@ nav ul li {
   height: 100px;
   width: 100px;
   cursor: pointer;
+  pointer-events: none;
   transition: all 0.2s ease-in-out;
 }
 .gallery-grid .grid-item .player video {

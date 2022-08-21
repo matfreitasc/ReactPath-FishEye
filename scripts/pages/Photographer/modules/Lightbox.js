@@ -5,6 +5,7 @@ export default function lightbox() {
   const lightboxContainer = document.querySelector('.lightbox-container');
   const lightboxImage = document.querySelector('.lightbox-image');
   const lightboxVideo = document.querySelector('.lightbox-video');
+  const source = document.createElement('source');
 
   const lightboxBtns = document.querySelectorAll('.lightbox-btn');
   const lightboxClose = document.querySelector('#close-button');
@@ -20,12 +21,16 @@ export default function lightbox() {
       lightboxVideo.style.display = 'none';
       lightboxImage.src = image.src;
       lightboxImage.alt = image.alt;
+      source.pause();
     }
     if (lightboxArray[activeImage].classList.contains('video')) {
       lightboxImage.style.display = 'none';
       lightboxVideo.style.display = 'block';
-      lightboxVideo.src = image.src;
-      lightboxVideo.alt = image.alt;
+      source.setAttribute('src', `${image.src}`);
+      source.setAttribute('type', 'video/mp4');
+      source.setAttribute('alt', image.alt);
+      lightboxVideo.appendChild(source);
+      lightboxVideo.load();
       lightboxVideo.play();
     }
     switch (activeImage) {
