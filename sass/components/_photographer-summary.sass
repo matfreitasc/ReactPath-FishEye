@@ -1,0 +1,30 @@
+@use '../styles' as *
+.ph-summary
+  position: -webkit-sticky
+  position: sticky
+  bottom: 0
+  margin-right: 25px
+  margin-left: auto
+  z-index: 999
+  background-color: $secondary-color
+  width: -moz-fit-content
+  width: fit-content
+  padding: 20px 38px
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  gap: 60px
+  align-items: center
+  font-size: 23.44px
+  border-radius: 5px 5px 0 0
+
+  .total-likes
+    display: flex
+    flex-direction: row
+    align-items: center
+    gap: 6px
+  svg
+    width: 18px
+    height: 18px
+    fill: black
+    stroke-width: 3

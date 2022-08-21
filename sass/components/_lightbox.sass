@@ -1,0 +1,93 @@
+@use '../styles' as *
+
+.lightbox-container
+  position: fixed
+  top: -999999
+  left: -99999
+  min-width: 100%
+  min-height: 100%
+  background-color: rgba(0, 0, 0, 0.9)
+  display: grid
+  place-items: center
+  padding: 1rem
+  opacity: 0
+  pointer-events: none
+  transition: opacity 0.2s ease-in-out
+  z-index: 9999
+
+  .lightbox-image-wrapper
+    display: grid
+    place-items: center
+    position: relative
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+    max-height: 90vh
+    max-width: 80vw
+
+    .lightbox-image
+      object-position: top
+      object-fit: cover
+      border-radius: 5px
+      width: 100%
+      max-height: 90vh
+
+    .lightbox-video
+      object-position: top
+      object-fit: cover
+      border-radius: 5px
+      width: 100%
+      max-height: 90vh
+      display: none
+
+    .lightbox-btn
+      position: absolute
+      display: grid
+      place-items: center
+      border: none
+      background-color: transparent
+      cursor: pointer
+      transition: scale 0.2s ease-in-out
+      transition: translate 0.25s ease-in-out
+      padding: .8rem
+      &:hover, &:focus
+        outline: none
+        svg
+          transform: scale(1.2) translate(10%,0)
+      svg
+        height: 48px
+        width: 48px
+        fill: $primary-color
+        stroke: $primary-color
+        stroke-width: 1.5
+
+.inactive
+  opacity: 0
+  pointer-events: none
+  
+
+
+.left
+  left: -60px
+.right
+  right: -60px
+
+.top
+  top: 0
+  right: -60px
+  svg 
+    height: 42px !important
+    width: 42px !important
+    stroke-width: 1 !important
+    transform: scale(1) !important
+    &:hover, &:focus
+      outline: none
+      svg
+        transform: scale(1) translate(0) !important
+
+.active 
+  display: none !important
+
+.modal-active
+  top: 0 !important
+  right: 0 !important
+  opacity: 1
+  pointer-events: all

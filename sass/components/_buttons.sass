@@ -1,0 +1,61 @@
+@use './../styles' as *
+
+.button //static
+    background-color: $primary-color 
+    color: #FFFFFF
+    border: none
+    border-radius: 5px
+    padding: 22px 36px
+    font-size: 1.125rem
+    font-weight: 700
+    cursor: pointer
+    width: -moz-fit-content
+    width: fit-content
+    &:hover
+        background-color: $secondary-color
+        color: black
+.buttons-section
+    display: none
+    position: absolute
+    z-index: 2
+    
+    #popularity
+        position: relative
+    #date
+        position: relative
+
+    #title
+        border-radius: 0px 0px 5px 5px
+
+    &::before
+        z-index: 10
+        content: ""
+        position: absolute
+        top: 0px
+        left: 10px
+        right: 10px
+        height: 2px
+        background-color: white
+        transform-origin: center
+    &::after
+        content: ""
+        position: absolute
+        bottom: 50px
+        left: 10px
+        right: 10px
+        height: 2px
+        background-color: white
+        transform-origin: center
+
+.order-buttons button 
+    display: flex
+    font-size: 18px
+    font-weight: 700
+    align-items: center
+    color: white
+    padding: 14px
+    width: 170px
+    height: 50px
+    border: none
+    background-color: $primary-color
+    cursor: pointer

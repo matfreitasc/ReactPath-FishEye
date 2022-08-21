@@ -1,0 +1,117 @@
+@use '../styles' as *
+
+    
+.galery
+    margin-top: 20px
+    width: 100%
+    
+    .dropdown-label
+        color: black
+        font-size: 1.125rem
+        font-weight: bold
+
+.gallery-grid 
+  margin-top: 60px
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-template-rows: repeat(350px, auto)
+  row-gap: 30px
+  justify-items: center
+
+  .grid-item
+    .gallery-image
+      object-fit: cover
+      object-position: top
+      width: 350px
+      height: 300px
+      border-radius: 5px
+      cursor: zoom-in
+      &:hover
+        opacity: .7
+        transition: all 0.2s ease-in-out
+
+    .player
+      cursor: pointer
+      position: relative
+
+      &::after
+        content: ''
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z'/%3E%3C/svg%3E") no-repeat center center
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z'/%3E%3C/svg%3E") no-repeat center center
+        -webkit-mask-size: cover
+        mask-size: cover
+        background-color: rgba(52, 52, 52, 0.8)
+        position: absolute
+        z-index: 4
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        color: #fff
+        height: 100px
+        width: 100px
+        cursor: pointer
+        transition: all 0.2s ease-in-out
+          
+      video
+        width: 350px
+        height: 300px
+        border-radius: 5px
+        object-fit: cover
+      .player-controls
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        .player-controls-button
+          position: absolute
+          top: 150px
+          left: 50%
+          transform: translate(-50%, -50%)
+          width: 100%
+          height: 80%
+          -moz-appearance: none
+          -webkit-appearance: none
+          appearance: none
+          background-color: transparent
+          border: none
+          cursor: zoom-in
+          svg
+            width: 100px
+            height: 100px
+            fill: #525252b7
+            transition: all 0.2s ease-in-out
+    .gallery-info
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+      width: 350px
+      margin-top: 10px
+      .gallery-item-title
+        font-size: 24px
+        font-weight: 400
+        color:$primary-color
+      .gallery-item-likes
+        display: flex
+        width:  -moz-fit-content
+        width: fit-content
+        flex-direction: row
+        align-items: center
+        flex-wrap: nowrap
+        gap: 6px
+        span
+          font-size: 24px
+          font-weight: 500
+          color: $primary-color
+        button 
+          height: 100%
+          width: 100%
+          appearance: none
+          background-color: transparent
+          border: none
+          svg
+            width: 18px
+            height: 18px
+            fill: $primary-color
+            stroke-width: 3

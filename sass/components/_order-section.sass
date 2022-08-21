@@ -1,0 +1,34 @@
+@use '../styles' as *
+
+.order-section 
+    align-items: baseline
+    display: flex
+    flex-direction: row
+    #order 
+        margin: 0 25px 0 0
+        font-size: 18px
+        font-weight: 700
+        line-height: 23.44px
+
+
+.dropdown
+    display: flex
+    justify-content: space-between
+    font-size: 20px
+    font-weight: bold
+    color: white
+    width: 170px
+    height: 50px
+    border: none
+    background-color: $primary-color
+    border-radius: 5px
+    cursor: pointer
+
+.arrow-icon
+  transition: all 0.2s ease-in-out
+  transform: rotate(180deg)
+.arrow-rotate
+  transform: rotate(0deg)
+
+.bottom-border-radius
+  border-radius: 5px 5px 0 0
