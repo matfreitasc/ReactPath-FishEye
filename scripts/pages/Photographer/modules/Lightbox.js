@@ -12,6 +12,8 @@ export default function lightbox() {
   const lightboxBtnRight = document.querySelector('#next-item');
   const lightboxBtnLeft = document.querySelector('#previous-item');
 
+  const videoControls = document.querySelector('.video-controls');
+
   let activeImage;
 
   const setActiveImage = (image) => {
@@ -21,7 +23,8 @@ export default function lightbox() {
       lightboxVideo.style.display = 'none';
       lightboxImage.src = image.src;
       lightboxImage.alt = image.alt;
-      source.pause();
+      videoControls.classList.remove('show');
+      lightboxVideo.pause();
     }
     if (lightboxArray[activeImage].classList.contains('video')) {
       lightboxImage.style.display = 'none';
@@ -31,7 +34,6 @@ export default function lightbox() {
       source.setAttribute('alt', image.alt);
       lightboxVideo.appendChild(source);
       lightboxVideo.load();
-      lightboxVideo.play();
     }
     switch (activeImage) {
       case 0:
@@ -105,4 +107,112 @@ export default function lightbox() {
       lightboxContainer.classList.remove('modal-active');
     }
   });
+
+  // Video Controls //
+  const playButton = document.querySelector('.play-button');
+  const fullscreenButton = document.querySelector('.fullscreen');
+  const volume = document.querySelector('.volume');
+  const volumeBar = document.querySelector('.volume-bar');
+
+  // Event to listen for when the play is playing or paused
+  // If video is pause the button will display pause and vice versa
+  lightboxVideo.addEventListener('play', () => {
+    playButton.classList.add('pause');
+    playButton.classList.remove('play');
+    videoControls.classList.add('show');
+  });
+  // Event to listen for when the video has ended
+  // If the video has ended the button will display play
+  lightboxVideo.addEventListener('ended', () => {
+    playButton.classList.add('play');
+    playButton.classList.remove('pause');
+  });
+  // Event to listen for when the video button is clicked //
+  playButton.addEventListener('click', () => {
+    if (lightboxVideo.paused) {
+      lightboxVideo.play();
+      playButton.classList.add('pause');
+      playButton.classList.remove('play');
+      playButton.setAttribute('title', 'Pause');
+      playButton.setAttribute('aria-label', 'Pause');
+    } else {
+      lightboxVideo.pause();
+      playButton.classList.remove('pause');
+      playButton.classList.add('play');
+      playButton.setAttribute('title', 'Play');
+      playButton.setAttribute('aria-label', 'Play');
+    }
+  });
+  // Event to listen for when the fullscreen button is clicked //
+  fullscreenButton.addEventListener('click', () => {
+    lightboxVideo.requestFullscreen();
+  });
+  // Event to listen for when the volume has changed  //
+  // If the volume is 0 the volume icon will display volume 0 and vice versa//
+  volumeBar.addEventListener('input', () => {
+    lightboxVideo.volume = volumeBar.value;
+    if (lightboxVideo.volume == 0) {
+      volume.classList.add('volume-disabled');
+    } else {
+      volume.classList.remove('volume-disabled');
+    }
+  });
+  // Event to listen for when the volume button is clicked //
+  volume.addEventListener('click', () => {
+    if (lightboxVideo.muted) {
+      lightboxVideo.muted = false;
+      volume.classList.add('volume-enabled');
+      volume.classList.remove('volume-disabled');
+      volumeBar.value = lightboxVideo.volume;
+    } else {
+      lightboxVideo.muted = true;
+      volume.classList.add('volume-disabled');
+      volume.classList.remove('volume-enabled');
+      volumeBar.value = 0;
+    }
+  });
+
+  // Display current time in the video //
+  const currentTime = () => {
+    const currentTime = document.querySelector('.current-time');
+    const duration = document.querySelector('.duration');
+
+    const currentMinutes = Math.floor(lightboxVideo.currentTime / 60);
+    const currentSeconds = Math.floor(
+      lightboxVideo.currentTime - currentMinutes * 60
+    );
+
+    const durationMinutes = Math.floor(lightboxVideo.duration / 60);
+    const durationSeconds = Math.floor(
+      lightboxVideo.duration - durationMinutes * 60
+    );
+
+    currentTime.innerHTML = `${currentMinutes}:${
+      currentSeconds < 10 ? '0' : ''
+    }${currentSeconds}`;
+    duration.innerHTML = `${durationMinutes}:${durationSeconds}`;
+  };
+  const progressBar = document.querySelector('.video-progress-current');
+  const progress = document.querySelector('.progress-bar');
+  // Event to listen for when the video has loaded //
+  // The duration of the video will be displayed //
+  lightboxVideo.addEventListener('loadedmetadata', () => {
+    currentTime();
+  });
+  // Event to listen for when the video has time update //
+  // The current time of the video will be displayed //
+  lightboxVideo.addEventListener('timeupdate', () => {
+    currentTime();
+    // update the progress bar //
+    progressBar.style.width = `${
+      (lightboxVideo.currentTime / lightboxVideo.duration) * 100
+    }%`;
+  });
+  // Event to listen for when the progress bar is clicked //
+  progress.addEventListener('click', (e) => {
+    const progressTime =
+      (e.offsetX / progress.offsetWidth) * lightboxVideo.duration;
+    lightboxVideo.currentTime = progressTime;
+  });
+  //
 }

@@ -1,6 +1,5 @@
 import createProfile from './modules/CreateProfile.js';
 import { sortData } from './modules/SortData.js';
-
 import photographerSummary from './modules/PhotographerSummary.js';
 import Constants from './modules/Constants.js';
 

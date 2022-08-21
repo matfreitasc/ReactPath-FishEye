@@ -6,6 +6,7 @@ export default function createProfile() {
   const phCity = document.querySelector('#ph-City');
   const phTagline = document.querySelector('#ph-Tagline');
   const phPhoto = document.querySelector('#ph-photo');
+  const contactMe = document.querySelector('#contact-me');
 
   phName.innerHTML = `${photographer.name}`;
   phName.setAttribute('aria-label', `Name: ${photographer.name}`);

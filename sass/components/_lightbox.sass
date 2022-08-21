@@ -1,4 +1,6 @@
 @use '../styles' as *
+.show
+  opacity: 1!important
 
 .lightbox-container
   position: fixed
@@ -15,6 +17,7 @@
   transition: opacity 0.2s ease-in-out
   z-index: 9999
 
+
   .lightbox-image-wrapper
     display: grid
     place-items: center
@@ -29,14 +32,161 @@
       border-radius: 5px
       width: 100%
       max-height: 90vh
+    .video-container
+      position: relative
+      .lightbox-video
+        object-position: top
+        object-fit: cover
+        border-radius: 5px
+        width: 100%
+        max-height: 90vh
+        display: none
 
-    .lightbox-video
-      object-position: top
-      object-fit: cover
-      border-radius: 5px
-      width: 100%
-      max-height: 90vh
-      display: none
+      .video-controls
+        position: absolute
+        opacity: 0
+        bottom: 0
+        z-index: 4
+        width: 100%
+        height: 40px
+        background-color: rgba(0,0,0,0.5)
+        display: flex
+        flex-wrap: nowrap
+        padding: 5px
+        align-content: center
+        align-items: center
+        .play-button
+          cursor: pointer
+          display: flex
+          justify-content: center
+          align-items: center
+          width: 30px
+          height: 30px
+          border-radius: 50%
+          border: none
+          background-color: rgba(255, 255, 255, 0.5)
+          margin-left: 10px
+          &:focus
+            outline: 2px solid $primary-color
+        .play::before
+          content: ''
+          -webkit-mask: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' %3E%3Cpath d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z' /%3E%3C/svg%3E")
+          mask: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' %3E%3Cpath d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z' /%3E%3C/svg%3E")
+          -webkit-mask-size: cover
+          mask-size: cover
+          background-color: white
+          width: 30px
+          height: 30px
+          cursor: pointer
+          &:focus
+            outline: none
+        .pause::before
+          content: ''
+          -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z'/%3E%3C/svg%3E")
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z'/%3E%3C/svg%3E")
+          -webkit-mask-size: cover
+          mask-size: cover
+          background-color: white
+          width: 30px
+          height: 30px     
+          cursor: pointer     
+        
+        
+        .time
+          color: white
+          margin: 0  0 0 20px
+          width: 150px
+
+
+        .video-progress
+          width: 100%
+          height: 15px
+          background-color: rgba(0, 0, 0, 0.5)
+          border-radius: 5px
+          position: relative
+          margin: 0 20px
+          .video-progress-current
+            position: absolute
+            top: 0
+            left: 0
+            width: 0
+            height: 100%
+            background-color: $primary-color
+            border-radius: 5px
+            &::after
+              content: ''
+              position: absolute
+              top: 0
+              right: 0
+              width: 15px
+              height: 15px
+              background-color: $secondary-color
+              border-radius: 50%
+          .progress-bar
+            position: absolute
+            top: 0
+            left: 0
+            -webkit-appearance: none
+            width: 100%
+            background: transparent
+            &::-webkit-slider-runnable-track
+              width: 100%
+              height: 15px
+              cursor: pointer
+              border-radius: 10px
+              &:focus
+                outline: none
+            &::-webkit-slider-thumb
+              -webkit-appearance: none
+              appearance: none
+              &:focus
+                outline: none
+
+        .volume
+          margin: 0 10px
+        .volume-bar
+          cursor: pointer
+        .volume-enabled
+          content: ''
+          -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z'/%3E%3Cpath d='M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z'/%3E%3Cpath d='M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z'/%3E%3C/svg%3E")
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z'/%3E%3Cpath d='M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z'/%3E%3Cpath d='M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z'/%3E%3C/svg%3E")
+          -webkit-mask-size: cover
+          mask-size: cover
+          background-color: white
+          width: 50px
+          height: 30px     
+          cursor: pointer
+          border: none
+        .volume-disabled
+          content: ''
+          -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E")
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E")
+          -webkit-mask-size: cover
+          mask-size: cover
+          background-color: white
+          width: 50px
+          height: 30px     
+          cursor: pointer   
+          border: none      
+        .fullscreen
+          margin: 0 10px
+          content: ''
+          width: 40px
+          height: 25px
+          color: white
+          cursor: pointer
+          -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z'/%3E%3C/svg%3E")
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z'/%3E%3C/svg%3E")
+          -webkit-mask-size: cover
+          mask-size: cover
+
+
+
+
+
+
+
+
 
     .lightbox-btn
       position: absolute

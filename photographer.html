@@ -3,14 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <link href="./css/photographer.css" rel="stylesheet" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="./assets/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
-    <script type="module" defer src="./scripts/pages/Photographer/index.js" ></script>
-    <script  defer src="./scripts/utils/contactForm.js" ></script>
+    <script
+      type="module"
+      defer
+      src="./scripts/pages/Photographer/index.js"
+    ></script>
+    <script
+      type="module"
+      defer
+      src="./scripts/pages/Photographer/utils/contactForm.js"
+    ></script>
     <title>Fisheye - photographer</title>
   </head>
   <body>
@@ -24,101 +32,187 @@
       </a>
     </header>
     <main id="main">
-      <section class="photographer-header" aria-label="Photographer Information">
+      <section
+        class="photographer-header"
+        aria-label="Photographer Information"
+      >
         <div class="ph-info">
-          <h1 id="ph-Name" ></h1>
-          <p id="ph-City" ></p>
-          <p id="ph-Tagline" "></p>
+          <h1 id="ph-Name"></h1>
+          <p id="ph-City"></p>
+          <p id="ph-Tagline"></p>
         </div>
-        <button id="open-modal" type="button" class="button" >Contact me</button>
-        <dialog class="modal" id="modal" aria-describedby="Dialog-Title">
+        <button id="open-modal" type="button" class="button">Contact me</button>
+        <dialog class="modal" id="modal" aria-describedby="contactMe">
           <header class="contact-modal-header">
-            <h2 class="modal-header-title" id="contactMe">Contact me Mimi Keel </h2>
-            <img src="./assets/icons/close.svg" id="Dialog-Title" alt="Close Contact form"/>
+            <h2 class="modal-header-title" id="contactMe">Contact Me</h2>
+            <img
+              src="./assets/icons/close.svg"
+              id="close-modal"
+              alt="Close Contact form"
+            />
           </header>
           <form class="form" method="dialog">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstname" />
-    
+
             <label for="lastName">Last Name</label>
             <input type="text" id="lastName" name="lastname" />
-    
+
             <label for="email">Email</label>
-            <input type="email" id="email" name="email"/>
-    
-            <label for="message" >Your Message</label>
-    
+            <input type="email" id="email" name="email" />
+
+            <label for="message">Your Message</label>
+
             <textarea id="message" name="message"></textarea>
-    
-            <button type="submit" class="contact_button" >Send</button>
+
+            <button type="submit" class="contact_button">Send</button>
           </form>
-        </dialog>    
-        <div class="ph-photo-div ">
-          <img
-            id="ph-photo"
-            class="skeleton"
-            alt="Photographer Photo"
-          />
+        </dialog>
+        <div class="ph-photo-div">
+          <img id="ph-photo" class="skeleton" alt="Photographer Photo" />
         </div>
       </section>
       <section class="galery" aria-label="Gallery">
         <div class="order-section">
           <h1 id="order" aria-hidden="true">Order by:</h1>
           <div class="order-buttons">
-            <button type="button" class="dropdown" id="dropdown-menu" aria-label="Order by" aria-haspopup="listbox">
+            <button
+              type="button"
+              class="dropdown"
+              id="dropdown-menu"
+              aria-label="Order by"
+              aria-haspopup="listbox"
+            >
               <span id="order-field-name">Date</span>
-              <svg id="arrow-icon" class="arrow-icon" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill="white"/>
-              </svg>                
+              <svg
+                id="arrow-icon"
+                class="arrow-icon"
+                width="16"
+                height="11"
+                viewBox="0 0 16 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
+                  fill="white"
+                />
+              </svg>
             </button>
             <div class="buttons-section">
-              <button type="button" id="popularity" aria-label="Order by popularity">Popularity</button>
-              <button type="button" class="active" id="date" aria-label="Order by date">Date</button>
-              <button type="button" id="title" aria-label="Order by title">Title</button>
+              <button
+                type="button"
+                id="popularity"
+                aria-label="Order by popularity"
+              >
+                Popularity
+              </button>
+              <button
+                type="button"
+                class="active"
+                id="date"
+                aria-label="Order by date"
+              >
+                Date
+              </button>
+              <button type="button" id="title" aria-label="Order by title">
+                Title
+              </button>
             </div>
           </div>
         </div>
-        </div>
-        <div class="gallery-grid" id="photographer_section">
-        </div>
-        
+
+        <div class="gallery-grid" id="photographer_section"></div>
       </section>
-      <div class="ph-summary" id="ph-Summary">
-      </div>
-      
+      <div class="ph-summary" id="ph-Summary"></div>
     </main>
 
     <div class="lightbox-container">
       <div class="lightbox-image-wrapper">
-        <button type="button" class="lightbox-btn top" id="close-button" aria-label="close dialog">
+        <button
+          type="button"
+          class="lightbox-btn top"
+          id="close-button"
+          aria-label="close dialog"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            <path
+              d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+            />
           </svg>
         </button>
-        <button type="button" class="lightbox-btn left" id="previous-item" aria-label="Previus image">
+        <button
+          type="button"
+          class="lightbox-btn left"
+          id="previous-item"
+          aria-label="Previus image"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+            <path
+              fill-rule="evenodd"
+              d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"
+            />
           </svg>
         </button>
-        <img  alt="image-galery" class="lightbox-image">
-        <video class="lightbox-video" autoplay controls>
-          <div id="video-controls" class="controls" data-state="hidden">
-            <button id="playpause" type="button" data-state="play">Play/Pause</button>
-            <button id="stop" type="button" data-state="stop">Stop</button>
-            <div class="progress">
-               <progress id="progress" value="0" min="0">
-                  <span id="progress-bar"></span>
-               </progress>
+        <img alt="image-galery" class="lightbox-image" />
+        <figure class="video-container">
+          <video class="lightbox-video" autoplay></video>
+          <div class="video-controls">
+            <button
+              type="button"
+              class="play-button play"
+              title="play"
+            ></button>
+            <div class="time">
+              <span class="current-time">00:00</span> /
+              <span class="duration">00:00</span>
             </div>
-            <button id="mute" type="button" data-state="mute">Mute/Unmute</button>
-            <button id="volinc" type="button" data-state="volup">Vol+</button>
-            <button id="voldec" type="button" data-state="voldown">Vol-</button>
-            <button id="fs" type="button" data-state="go-fullscreen">Fullscreen</button>
-         </div>
-        </video>
-        <button type="button" class="lightbox-btn right" id="next-item" aria-label="Next image">
+
+            <div class="video-progress">
+              <div class="video-progress-current"></div>
+              <input
+                type="range"
+                class="progress-bar"
+                min="0"
+                max="100"
+                value="0"
+                step="0.01"
+                title="progress bar"
+              />
+            </div>
+            <button
+              type="button"
+              class="volume volume-enabled"
+              title="volume"
+            ></button>
+            <input
+              type="range"
+              class="volume-bar"
+              min="0"
+              max="1"
+              step="0.01"
+              value="1"
+              title="volume bar"
+            />
+            <button
+              type="button"
+              class="fullscreen"
+              title="fullscreen"
+            ></button>
+          </div>
+        </figure>
+
+        <button
+          type="button"
+          class="lightbox-btn right"
+          id="next-item"
+          aria-label="Next image"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+            <path
+              fill-rule="evenodd"
+              d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"
+            />
           </svg>
         </button>
       </div>
