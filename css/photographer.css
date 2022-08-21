@@ -401,7 +401,7 @@ nav ul li {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(350px, auto);
-  row-gap: 30px;
+  gap: 30px;
   justify-items: center;
 }
 .gallery-grid .grid-item {
