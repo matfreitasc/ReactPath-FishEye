@@ -52,10 +52,16 @@
             />
           </header>
           <form class="form" method="dialog">
-            <label for="firstName">First Name</label>
+            <label for="firstName"
+              >First Name:<span class="reqField">*</span
+              ><span class="element-invisible" id="firstNameError"></span
+            ></label>
             <input type="text" id="firstName" name="firstname" />
 
-            <label for="lastName">Last Name</label>
+            <label for="lastName"
+              >Last Name:<span class="reqField">*</span
+              ><span class="element-invisible" id="lastNameError"></span
+            ></label>
             <input type="text" id="lastName" name="lastname" />
 
             <label for="email">Email</label>
