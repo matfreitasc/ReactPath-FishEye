@@ -352,6 +352,7 @@ nav ul li {
   background-color: #DB8876;
   width: -moz-fit-content;
   width: fit-content;
+  max-width: 370px;
   padding: 20px 38px;
   display: flex;
   flex-direction: row;
@@ -491,17 +492,17 @@ nav ul li {
   color: #901C1C;
 }
 .gallery-grid .grid-item .gallery-info .gallery-item-likes button {
-  height: 100%;
-  width: 100%;
+  width: 18px;
+  height: 18px;
   appearance: none;
   background-color: transparent;
   border: none;
+  color: gray;
+  cursor: pointer;
 }
-.gallery-grid .grid-item .gallery-info .gallery-item-likes button svg {
-  width: 18px;
-  height: 18px;
-  fill: #901C1C;
-  stroke-width: 3;
+
+.liked {
+  color: #901C1C !important;
 }
 
 .show {
