@@ -46,7 +46,6 @@ export function sortData(sortBy) {
         return new Date(b.date) - new Date(a.date);
       })
     );
-    lightbox();
   } else if (sortBy == 'popularity') {
     galleryItems.forEach((item) => {
       item.remove();
@@ -56,7 +55,6 @@ export function sortData(sortBy) {
         return b.likes - a.likes;
       })
     );
-    lightbox();
   } else if (sortBy == 'title') {
     galleryItems.forEach((item) => {
       item.remove();
@@ -70,6 +68,6 @@ export function sortData(sortBy) {
         }
       })
     );
-    lightbox();
   }
+  lightbox();
 }
