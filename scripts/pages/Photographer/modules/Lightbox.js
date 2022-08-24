@@ -118,12 +118,13 @@ export default function lightbox() {
   const volumeBar = document.querySelector('.volume-bar');
 
   // Event to listen for when the play is playing or paused
-  // If video is pause the button will display pause and vice versa
+  // If the video is play then the video trakc will display
   lightboxVideo.addEventListener('play', () => {
     playButton.classList.add('pause');
     playButton.classList.remove('play');
     videoControls.classList.add('show');
   });
+
   // Event to listen for when the video has ended
   // If the video has ended the button will display play
   lightboxVideo.addEventListener('ended', () => {
