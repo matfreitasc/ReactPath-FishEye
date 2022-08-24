@@ -234,6 +234,8 @@ nav ul li {
   border: none;
   border-radius: 5px;
   resize: none;
+  padding: 5px;
+  font-size: 24px;
 }
 .modal form textarea:focus-visible {
   outline: none;
@@ -253,6 +255,17 @@ nav ul li {
   padding: 23px 63px;
   cursor: pointer;
   color: white;
+}
+.modal form p {
+  display: none;
+}
+
+.error {
+  display: block !important;
+  color: #901C1C !important;
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .photographer-header {
